@@ -65,6 +65,9 @@ xTrainC <- mutate(xTrainC, type = "train")
 
 harComp <- merge(xTestC, xTrainC, all = TRUE)
 
-
+## add meaningful activity labels
+activityKey = c(walking=1, walkingUpstairs=2, walkingDownstairs=3,
+                sitting=4, standing=5, laying=6)
+harComp$activity <- names(activityKey)[match(harComp$activityCode,activityKey)]
 
 
