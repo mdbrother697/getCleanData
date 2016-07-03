@@ -3,6 +3,7 @@
 ## All files are run thru tbl_df to prep for using dplyr except features
 
 library(dplyr)
+library(tidyr)
 
 print("Reading test data files")
 
@@ -70,4 +71,13 @@ activityKey = c(walking=1, walkingUpstairs=2, walkingDownstairs=3,
                 sitting=4, standing=5, laying=6)
 harComp$activity <- names(activityKey)[match(harComp$activityCode,activityKey)]
 
+##select requested subset of data
 
+meancols <- grep("mean()", names(harComp))
+stdcols <- grep("std()", names(harComp))
+harsub <- select(harComp, c(1,2,481,480,meancols, stdcols))
+
+## tidy up the data
+
+har <- harsub %>% gather(measure, value, 5:83) %>% 
+    separate(measure, c("measure", "summary", "coord"))
