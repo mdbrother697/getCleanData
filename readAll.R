@@ -73,11 +73,17 @@ harComp$activity <- names(activityKey)[match(harComp$activityCode,activityKey)]
 
 ##select requested subset of data
 
-meancols <- grep("mean()", names(harComp))
-stdcols <- grep("std()", names(harComp))
+meancols <- grep("mean[^F]", names(harComp))
+stdcols <- grep("std[^F]", names(harComp))
 harsub <- select(harComp, c(1,2,481,480,meancols, stdcols))
 
 ## tidy up the data
 
-har <- harsub %>% gather(measure, value, 5:83) %>% 
+print("Tidy and summarize the data")
+
+har <- harsub %>% gather(measure, value, 5:70) %>% 
     separate(measure, c("measure", "summary", "coord"))
+
+harSummary <- har %>% 
+    group_by(activity, subjectCode, type, measure, summary, coord) %>% 
+    summarize(mean(value))
