@@ -1,0 +1,39 @@
+---
+title: "README.md"
+author: "Michael Brother"
+date: "July 3, 2016"
+output: html_document
+---
+
+All required steps to load, merge, tidy, and summarize the original data set are in the single script run_analysis.R included in this repo.
+
+Before running this script:
+- Install the script in the working directory
+- Install the unzipped files from the original data set in the working directory. Maintain the same directory structure as the original data set with test and train sub directories in the working directory.
+
+The script prints status messages to the console to show progress. Here is a brief description of the activities in each section.
+
+## Reading test data files
+
+Reads the data files and subject labels from the test directory. Loads each file into a data frame for processing.
+
+## Reading training data files
+
+Reads the data files and subject labels from the train directory. Loads each file into a data frame for processing. Reading the training data files is shown separately because it can take a while to complete.
+
+## labelling columns of test and training DFs with feature names
+
+Replaces the generic labels with the specific feature names from features.txt. This step also deletes duplicate feature names included in the original data set that were not required for this assignment.
+
+## adding activity and subject code columns
+
+Adds these columns from separate files in the original data set
+
+
+## Merging test and train data
+
+Adds a column describing the type of data (test or train) and a descriptive label to replace the activity code. Merges the test and train data frames. Extracts the mean and standard deviation data as required for the assignment.
+
+## Tidy and summarize the data
+
+Primarily splits the measure column into measure, summary, and coordinate (coord) columns to produce the har DF, step 4 of the assignment. The DF is grouped and summarized to create the harSummary DF for step 5 of the assignment.
