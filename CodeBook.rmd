@@ -1,0 +1,63 @@
+---
+title: "CodeBook.md"
+author: "Michael Brother"
+date: "July 3, 2016"
+output: html_document
+---
+
+# Dataset harComp
+
+This is the complete, merged data set before tidying. Most variables are taken directly from the Human Activity Recognition Using Smartphones Dataset Version 1.0. These variables are defined and described in the documents features_info.txt and features.txt included with the dataset.
+
+## Added Variables
+
+These are variables added to the original dataset
+
+- type : The type of test that produced the observation. Either test or train (training)
+- activity : A meaningful description of the specific activity for that observation. Activity names are taken from the activity_labels.txt document included with the dataset.
+- subjectCode : The subject code for the observation taken from subjecttest.txt and subjecttrain.txt documents included with the dataset.
+
+# Dataset har
+
+This is the tidy dataset from step 4 of the assignment.
+
+## Variable Descriptions
+
+- subjectCode : The subject code for the observation taken from subject_test.txt and subjecttrain.txt documents included with the dataset.
+
+- ActivityCode : The activity code from y_test.txt and xtest.txt documents included with the dataset.
+
+- activity : A meaningful description of the specific activity for that observation. Activity names are taken from the activity_labels.txt document included with the dataset.
+
+- type : The type of test that produced the observation. Either test or train (training)
+
+- measure : The feature name with the mean() or std() and x,y,z indicator stripped from the original feature definition.
+
+- summary : Whether the observation is a mean or standard deviation (std)
+
+- coord : Coordinate of the observation (x, y, or z). Some measures did not include x, y, or z coordinates in the original dataset. The coord variable is blank in that case.
+
+- value : The value provided for the observation.
+
+
+# Dataset harSummary
+
+This is the final tidy dataset from step 5 of the assignment.
+
+## Variable Descriptions
+
+- subjectCode : The subject code for the observation taken from subject_test.txt and subjecttrain.txt documents included with the dataset.
+
+- ActivityCode : The activity code from y_test.txt and xtest.txt documents included with the dataset.
+
+- activity : A meaningful description of the specific activity for that observation. Activity names are taken from the activity_labels.txt document included with the dataset.
+
+- type : The type of test that produced the observation. Either test or train (training)
+
+- measure : The feature name with the mean() or std() and x,y,z indicator stripped from the original feature definition.
+
+- summary : Whether the observation is a mean or standard deviation (std)
+
+- coord : Coordinate of the observation (x, y, or z). Some measures did not include x, y, or z coordinates in the original dataset. The coord variable is blank in that case.
+
+- mean(value) : The mean value of all observations for that feature grouped by avtivity and subject
